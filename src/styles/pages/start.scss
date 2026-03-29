@@ -1,0 +1,53 @@
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+@use '../base/font' as *;
+
+.start{
+    @include flex-center(column, 85px);
+    height: 100vh;
+    width: 100%;
+    background-color: $background;
+    background-image: url('assets/controller_bg.png');
+    background-repeat: no-repeat;
+    background-position: left bottom;
+
+    &__hero{
+        color: white;
+    }
+
+    &__subtitle{
+        font-family: 'Almarai';
+        font-size: 48px;
+    }
+
+    &__title{
+        font-family: 'Red Rose Bold';
+        font-size: 140px;
+    }
+}
+
+
+.button--play{
+    align-self: center;
+
+    .button__icon{
+        width: 44px;
+        transform: rotate(25.77deg);
+    }
+
+    .button__arrow{
+        width: 33px;
+    }
+
+    &:hover{
+        .button__icon{
+            width: 51px;
+            transform: rotate(0);
+        }
+        
+        .button__arrow{
+            width: 36px;
+            content: url('../assets/arrow_thick.png');
+        }
+    }
+}

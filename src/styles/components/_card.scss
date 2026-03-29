@@ -1,0 +1,40 @@
+.card{
+    height: 120px;
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &__matched{
+        visibility: hidden;
+        pointer-events: none;
+    }
+    
+    &__inner{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &__face{
+        position: absolute;
+        inset: 0;
+        background-image:
+                        url(/assets/food/food_back.svg),
+                        linear-gradient(215deg,#4DD5BC 0%, #286F62 60%, #10443a 100%);
+        background-position: center;
+        background-repeat: no-repeat;
+        backface-visibility: hidden;
+
+        &--back{
+            transform: rotateY(180deg);
+            // background-image: none;
+            // background-color: black;
+        }
+    }
+    &.is-flipped .card__inner{
+        transform: rotateY(180deg);
+    }
+}

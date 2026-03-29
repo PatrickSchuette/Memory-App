@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory - Game</title>
+</head>
+
+<body data-page="game">
+    <main class="game">
+        <header class="game__header">
+            <section class="game__score">
+                <ul>
+                    <li class="game__score--blue">
+                        Blue
+                        <span id="score-blue">0</span>
+                    </li>
+                    <li class="game__score--orange">
+                        Orange
+                        <span id="score-orange">0</span>
+                    </li>
+                </ul>
+            </section>
+            <section class="game__player">
+                <p class="current-player game__player--blue">Current Player:</p>
+            </section>
+            <button class="button button--exit button--primary">
+                <img class="button__icon" src="/public/assets/btn_exit.svg" alt="Exit">
+                <span class="button__text">Exit Game</span>
+            </button>
+        </header>
+        <section class="game__field game__field--small" id="field">
+        </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+
+</body>
+
+</html>

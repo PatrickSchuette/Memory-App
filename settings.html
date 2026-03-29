@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory - Settings</title>
+</head>
+<body data-page="settings">
+    <main class="settings">
+        <header class="settings__header">
+            <h1>Settings</h1>
+        </header>
+        <div class="settings__layout">
+            <form class="settings__form">
+
+                <fieldset>
+                    <legend>
+                        <img src="/assets/setting_theme.svg" alt="palette-icon">
+                        Game Themes
+                    </legend>
+                    <label>
+                        <input type="radio" name="theme" value="GamingTheme">
+                        Gaming Theme
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="FoodsTheme">
+                        Foods theme
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>
+                        <img src="/assets/setting_player.svg" alt="pawn-icon">
+                        Choose Player
+                    </legend>
+                    <label>
+                        <input type="radio" name="player" value="Blue" checked>
+                        Blue
+                    </label>
+                    <label>
+                        <input type="radio" name="player" value="Orange">
+                        Orange
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>
+                        <img src="/assets/setting_boardSize.svg" alt="board-icon">
+                        Board Size
+                    </legend>
+                    <label>
+                        <input type="radio" name="board" value="16" checked>
+                        16 Cards
+                    </label>
+                    <label>
+                        <input type="radio" name="board" value="24">
+                        24 Cards
+                    </label>
+                    <label>
+                        <input type="radio" name="board" value="36">
+                        36 Cards
+                    </label>
+                </fieldset>
+
+            </form>
+
+            <div class="settings__right">
+                <img class="settings__preview" src="/assets/themeIT.svg" alt="theme-preview">
+                <section class="settings__summary">
+                    <ul>
+                        <li>Code Vibes Theme</li>
+                        <li>Blue</li>
+                        <li>16 Cards</li>
+                    </ul>
+                    <a class="button button--start button--primary" id="button-start" href="game.html">
+                        <img class="button__icon" src="../assets/play_tilted.png" alt="icon-play">
+                        <span class="button__text">Start</span>
+                    </a>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

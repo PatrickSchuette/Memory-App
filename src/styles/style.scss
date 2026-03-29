@@ -1,9 +1,25 @@
-body {
-    height: 100vh;
-    background-color: blue;
+@use './components/button';
+@use './components/card';
+@use './pages/start.scss';
+@use './pages/settings.scss';
+@use './pages/game.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.card {
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+
+.cardOLD {
     height: 100px;
     aspect-ratio: 1/1;
     background-color: transparent;
@@ -25,7 +41,7 @@ body {
 
         &--back {
             transform: rotateY(180deg);
-            background-color: red;
+            background-color: yellow;
         }
     }
 
