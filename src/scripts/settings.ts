@@ -7,9 +7,9 @@ interface GameSettings {
 }
 
 let settingsData: GameSettings = {
-    theme: "Code Vibes Theme",
+    theme: "CodeVibesTheme",
     player: "Blue",
-    boardSize: 11
+    boardSize: 16
 };
 
 let elementRev = {
@@ -30,9 +30,7 @@ const themePreviewMap: Record<string, string> = {
     FoodsTheme:'/assets/themeFood.svg'
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    initSettings();
-})
+initSettings();
 
 elementRev.startButton?.addEventListener('click', () => {
     sessionStorage.setItem('gameSettings', JSON.stringify(settingsData));

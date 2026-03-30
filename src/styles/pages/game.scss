@@ -2,7 +2,7 @@
 @use '../abstract/variables' as *;
 @use '../base/font' as *;
 
-.game{
+.game {
     @include flex-start(column, 54px);
     align-items: center;
     min-height: 100vh;
@@ -11,7 +11,7 @@
     padding-bottom: 54px;
 }
 
-.game__header{
+.game__header {
     @include flex-space();
     align-items: flex-end;
     width: 100%;
@@ -24,29 +24,30 @@
     box-shadow: 0px 4px 9px 4px $background;
 }
 
-.game__score{
+.game__score {
     background-color: $tertiary;
     padding: 17px 20px;
 
-    &--blue{
+    &--blue {
         color: $player-blue;
     }
 
-    &--orange{
+    &--orange {
         color: $player-orange;
     }
 }
 
-.game__score ul{
+.game__score ul {
     @include flex-start(row, 20px);
     list-style: none;
     font-size: 24px;
 }
 
 .game__score li,
-.game__player p{
+.game__player p {
+
     &::before,
-    &::after{
+    &::after {
         content: "";
         position: absolute;
         top: 50%;
@@ -54,107 +55,114 @@
         border-radius: 2px;
     }
 
-    &::before{
+    &::before {
         border: 10px solid;
         border-color: inherit;
     }
 
-    &::after{
+    &::after {
         border: solid transparent;
         border-width: 10px 0 10px 8px;
         border-left-color: inherit;
     }
 }
 
-.game__score li{
+.game__score li {
     position: relative;
     margin-left: 31px;
 
-    &::before{
+    &::before {
         left: -31px;
     }
 
-    &::after{
+    &::after {
         left: -12px;
     }
 }
 
-.game__player p{
+.game__player p {
     position: relative;
 
-    &::before{
+    &::before {
         right: -31px;
     }
 
-    &::after{
+    &::after {
         right: -38px;
     }
 }
 
-.game__player{
+.game__player {
     color: white;
     font-size: 26px;
     margin-right: 39px;
 
-    &--blue{
-        &::after{
+    &--blue {
+        &::after {
             color: $player-blue;
         }
 
-        &::before{
+        &::before {
             color: $player-blue;
         }
     }
 
-    &--orange{
-        &::after{
+    &--orange {
+        &::after {
             color: $player-orange;
         }
 
-        &::before{
+        &::before {
             color: $player-orange;
         }
     }
 }
 
-.button--exit{
+.button--exit {
     background-color: $tertiary;
     border: 2px solid $secondary;
     gap: 10px;
     padding: 16px 24px;
 
-    .button__icon{
+    .button__icon {
         transition: none;
     }
 
-    .button__text{
+    .button__text {
         color: white;
         font-size: 24px;
     }
 
-    &:hover{
+    &:hover {
         border: 3px solid $secondary;
         padding: 15px 23px;
         box-shadow: 0 0 20px $tertiary;
 
-        .button__icon{
+        .button__icon {
             filter: drop-shadow(1px 1px 2px rgba($color: #000000, $alpha: 1));
         }
     }
 }
 
-.game__field{
+.game__field {
     display: grid;
 
-    &--small{
+    &--16 {
         width: 525px;
         grid-template-columns: repeat(4, 1fr);
         gap: 15px;
     }
 
-    &--large{
+    &--24 {
+        width: 770px;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 12px;
+    }
+
+    &--36 {
         width: 770px;
         grid-template-columns: repeat(6, 1fr);
         gap: 10px;
     }
+
 }
