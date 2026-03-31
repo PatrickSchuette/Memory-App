@@ -1,0 +1,58 @@
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+@use '../base/font' as *;
+
+.winner {
+    @include flex-center(column, 40px);
+    min-height: 100vh;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    padding: 40px;
+
+    h1 {
+        font-size: 48px;
+        font-family: 'Red Rose';
+        margin: 0;
+
+        &.winner--blue {
+            color: $player-blue;
+        }
+
+        &.winner--orange {
+            color: $player-orange;
+        }
+    }
+
+    .winner-icon {
+        width: 120px;
+        height: 120px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &--blue {
+            filter: drop-shadow(0 0 10px $player-blue);
+        }
+
+        &--orange {
+            filter: drop-shadow(0 0 10px $player-orange);
+        }
+    }
+
+    .button-home {
+        background-color: $player-orange;
+        color: white;
+        padding: 14px 28px;
+        border-radius: 6px;
+        font-size: 24px;
+        border: none;
+        cursor: pointer;
+        transition: 0.2s ease;
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba($player-orange, 0.6);
+        }
+    }
+}

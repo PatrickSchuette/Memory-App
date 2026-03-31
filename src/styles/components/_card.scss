@@ -41,3 +41,7 @@
         transition: opacity 0.4s ease;
     }
 }
+
+.card.cheat-reveal .card__inner {
+    transform: rotateY(180deg) !important;
+}

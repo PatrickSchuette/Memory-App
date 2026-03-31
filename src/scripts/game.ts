@@ -183,6 +183,12 @@ function disableCards() {
 
     updateScore();
     state.matches++;
+
+    if (state.matches === settings.boardSize / 2) {
+        endGame();
+    }
+    
+
     resetTurn();
 }
 
@@ -206,3 +212,30 @@ function resetTurn() {
     state.secondCard = null;
     state.lockBoard = false;
 }
+
+function endGame() {
+    const winner =
+        state.blueScore > state.orangeScore
+            ? "Blue"
+            : state.orangeScore > state.blueScore
+            ? "Orange"
+            : "Draw";
+
+    sessionStorage.setItem("winner", winner);
+    sessionStorage.setItem("blueScore", state.blueScore.toString());
+    sessionStorage.setItem("orangeScore", state.orangeScore.toString());
+
+    // Game-Over-Seite öffnen
+    window.location.href = "/game-over.html";
+}
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "c") {
+        console.warn("CHEAT MODE: All cards revealed");
+
+        document.querySelectorAll<HTMLButtonElement>(".card").forEach(card => {
+            card.classList.add("cheat-reveal");
+        });
+    }
+});
+
