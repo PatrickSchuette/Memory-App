@@ -22,22 +22,22 @@ let state: GameState;
 let field: HTMLElement | null = null;
 
 const images = [
-    "/assets/food/food_01.svg",
-    "/assets/food/food_02.svg",
-    "/assets/food/food_03.svg",
-    "/assets/food/food_04.svg",
-    "/assets/food/food_05.svg",
-    "/assets/food/food_06.svg",
-    "/assets/food/food_07.svg",
-    "/assets/food/food_08.svg",
-    "/assets/food/food_09.svg",
-    "/assets/food/food_10.svg",
-    "/assets/food/food_11.svg",
-    "/assets/food/food_12.svg",
-    "/assets/food/food_13.svg",
-    "/assets/food/food_14.svg",
-    "/assets/food/food_15.svg",
-    "/assets/food/food_16.svg",
+    "/assets/food/card_1.svg",
+    "/assets/food/card_2.svg",
+    "/assets/food/card_3.svg",
+    "/assets/food/card_4.svg",
+    "/assets/food/card_5.svg",
+    "/assets/food/card_6.svg",
+    "/assets/food/card_7.svg",
+    "/assets/food/card_8.svg",
+    "/assets/food/card_9.svg",
+    "/assets/food/card_10.svg",
+    "/assets/food/card_11.svg",
+    "/assets/food/card_12.svg",
+    "/assets/food/card_13.svg",
+    "/assets/food/card_14.svg",
+    "/assets/food/card_15.svg",
+    "/assets/food/card_16.svg",
 ];
 
 function startGame() {
