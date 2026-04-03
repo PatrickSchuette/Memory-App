@@ -7,7 +7,7 @@ interface GameSettings {
 }
 
 interface GameState {
-    deck: string[];
+    deck: number[];
     firstCard: HTMLButtonElement | null;
     secondCard: HTMLButtonElement | null;
     lockBoard: boolean;
@@ -38,10 +38,13 @@ const images = [
     "/assets/food/card_14.svg",
     "/assets/food/card_15.svg",
     "/assets/food/card_16.svg",
+    "/assets/food/card_17.svg",
+    "/assets/food/card_18.svg"
 ];
 
 function startGame() {
     settings = loadSettings();
+    document.body.classList.add(`theme--${settings.theme}`);
     initField();
     applyGridClass();
     initState();
@@ -82,8 +85,8 @@ function initState() {
 
 function createDeck(size: number) {
     const pairCount = size / 2;
-    const selected = images.slice(0, pairCount);
-    const deck = [...selected, ...selected];
+    const ids = Array.from({ length: pairCount }, (_, i) => i + 1);
+    const deck = [...ids, ...ids];
     return deck.sort(() => Math.random() - 0.5);
 }
 
@@ -103,25 +106,21 @@ function applyGridClass() {
 
 function renderBoard() {
     if (!field) return;
-    
+
     field.innerHTML = "";
 
-    state.deck.forEach(img => {
-        if (!field) return;
-        field.innerHTML += `
-        <button class="card" data-image="${img}">
-            <div class="card__inner">
-                <div class="card__face card__face--front"></div>
-                <div class="card__face card__face--back">
-                    <img src="${img}">
+    state.deck.forEach(id => {
+        field!.innerHTML += `
+            <button class="card" data-image="${id}">
+                <div class="card__inner">
+                    <div class="card__face card__face--front"></div>
+                    <div class="card__face card__face--back"></div>
                 </div>
-            </div>
-        </button>
-    `;
-    
-    
+            </button>
+        `;
     });
 }
+
 
 function addCardEvents() {
     if (!field) return;

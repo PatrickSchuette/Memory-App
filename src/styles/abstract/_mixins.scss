@@ -20,3 +20,11 @@
     justify-content: space-between;
     flex-direction: $direction;
 }
+
+@mixin generate-card-images($theme, $folder, $count) {
+    @for $i from 1 through $count {
+        .theme--#{$theme} .card[data-image="#{$i}"] .card__face--back {
+            background-image: url("/assets/#{$folder}/card_#{$i}.svg");
+        }
+    }
+}

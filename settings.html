@@ -17,11 +17,19 @@
                 <fieldset>
                     <legend>
                         <img src="/assets/setting_theme.svg" alt="palette-icon">
-                        Game Themes
+                        Game themes
                     </legend>
+                    <label>
+                        <input type="radio" name="theme" value="CodeVibesTheme">
+                        Code vibes theme
+                    </label>
                     <label>
                         <input type="radio" name="theme" value="GamingTheme">
                         Gaming Theme
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="DAProjectsTheme">
+                        DA Projects Theme
                     </label>
                     <label>
                         <input type="radio" name="theme" value="FoodsTheme">
@@ -35,7 +43,7 @@
                         Choose Player
                     </legend>
                     <label>
-                        <input type="radio" name="player" value="Blue" checked>
+                        <input type="radio" name="player" value="Blue">
                         Blue
                     </label>
                     <label>
@@ -50,7 +58,7 @@
                         Board Size
                     </legend>
                     <label>
-                        <input type="radio" name="board" value="16" checked>
+                        <input type="radio" name="board" value="16">
                         16 Cards
                     </label>
                     <label>
@@ -66,17 +74,18 @@
             </form>
 
             <div class="settings__right">
-                <img class="settings__preview" src="/assets/themeIT.svg" alt="theme-preview">
+                <img class="settings__preview" src="" alt="theme-preview">
                 <section class="settings__summary">
                     <ul>
                         <li>Code Vibes Theme</li>
                         <li>Blue</li>
                         <li>16 Cards</li>
                     </ul>
-                    <a class="button button--start button--primary" id="button-start" href="game.html">
-                        <img class="button__icon" src="../assets/play_tilted.png" alt="icon-play">
+                    <button class="button button--start button--primary" id="button-start" disabled>
+                        <img class="button__icon" src="../assets/start.svg" alt="icon-play">
                         <span class="button__text">Start</span>
-                    </a>
+                    </button>
+                    
                 </section>
             </div>
         </div>

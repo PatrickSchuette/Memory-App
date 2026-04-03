@@ -1,3 +1,10 @@
+@use "../abstract/mixins" as *;
+
+@include generate-card-images("food", "food", 18);
+@include generate-card-images("da", "da", 18);
+@include generate-card-images("game", "game", 18);
+@include generate-card-images("it", "it", 18);
+
 .card {
     height: 120px;
     aspect-ratio: 1/1;
@@ -20,9 +27,6 @@
     }
 
     &__face--front {
-        background-image:
-            url(/assets/food/card_back.svg),
-            linear-gradient(215deg,#4DD5BC 0%, #286F62 60%, #10443a 100%);
         background-position: center;
         background-repeat: no-repeat;
     }
@@ -42,6 +46,24 @@
     }
 }
 
+/* THEMES – müssen außerhalb von .card stehen! */
+.theme--food .card__face--front {
+    background-image: url("/assets/food/card_back.svg");
+}
+
+.theme--da .card__face--front {
+    background-image: url("/assets/da/card_back.svg");
+}
+
+.theme--game .card__face--front {
+    background-image: url("/assets/game/card_back.svg");
+}
+
+.theme--it .card__face--front {
+    background-image: url("/assets/it/card_back.svg");
+}
+
+/* Cheat Mode */
 .card.cheat-reveal .card__inner {
     transform: rotateY(180deg) !important;
 }
