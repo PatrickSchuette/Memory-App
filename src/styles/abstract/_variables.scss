@@ -6,3 +6,44 @@ $tertiary: #86E9D633;
 $disabled: #DBDBD6;
 $player-blue: #2BB1FF;
 $player-orange: #F58E39;
+
+:root {
+    --exit-icon: url('/assets/exit.svg');
+    --exit-icon-hover: url('/assets/exit_hover.svg');
+}
+
+.theme--it {
+    --exit-icon: url('/assets/it/exit.svg');
+    --exit-icon-hover: url('/assets/it/exit_hover.svg');
+    --back-icon: url('/assets/it/back.svg');
+    --back-icon-hover: url('/assets/it/back_hover.svg');
+    --backgroundTheme: #303131;
+    --backgroundHeader: #303131;
+}
+
+.theme--game {
+    --exit-icon: url('/assets/game/exit.svg');
+    --exit-icon-hover: url('/assets/game/exit_hover.svg');
+    --back-icon: url('/assets/game/back.svg');
+    --back-icon-hover: url('/assets/game/back_hover.svg');
+    --backgroundTheme: #294F60;
+    --backgroundHeader: #FD96C933;
+}
+
+.theme--da {
+    --exit-icon: url('/assets/da/exit.svg');
+    --exit-icon-hover: url('/assets/da/exit_hover.svg');
+    --back-icon: url('/assets/da/back.svg');
+    --back-icon-hover: url('/assets/da/back_hover.svg');
+    --backgroundTheme: #FFFFFF;
+    --backgroundHeader: #F0F3F4;
+}
+
+.theme--food {
+    --exit-icon: url('/assets/food/exit.svg');
+    --exit-icon-hover: url('/assets/food/exit_hover.svg');
+    --back-icon: url('/assets/food/back.svg');
+    --back-icon-hover: url('/assets/food/back_hover.svg');
+    --backgroundTheme: #FFFFFF;
+    --backgroundHeader: #F0E5D9;
+}

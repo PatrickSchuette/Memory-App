@@ -27,14 +27,21 @@
             <section class="game__player">
                 <p class="current-player game__player--blue">Current Player:</p>
             </section>
-            <button class="button button--exit button--primary">
-                <img class="button__icon" src="/public/assets/btn_exit.svg" alt="Exit">
-                <span class="button__text">Exit Game</span>
-            </button>
+            <button class="button button--exit" id="button-exit" onclick="showDialog()"></button>
         </header>
         <section class="game__field game__field--small" id="field">
         </section>
     </main>
+
+    <dialog id="exitGame">
+        <span>Are you sure you want to <br>quit the game?</span>
+    
+        <div class="dialog__buttons">
+            <button class="button button--back" id="dialog-back"></button>
+            <button class="button button--exit" id="dialog-exit"></button>
+        </div>
+    </dialog>
+    
 
 </body>
 

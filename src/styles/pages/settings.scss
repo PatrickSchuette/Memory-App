@@ -164,3 +164,12 @@
         filter: grayscale(1);
     }
 }
+
+.settings__preview {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.settings__preview[src]:not([src=""]) {
+    opacity: 1;
+}

@@ -42,6 +42,14 @@ const images = [
     "/assets/food/card_18.svg"
 ];
 
+const elementRev = {
+    dialog: document.getElementById("exitGame") as HTMLDialogElement,
+    exitButton: document.getElementById("button-exit") as HTMLButtonElement,
+    dialogBack: document.getElementById("dialog-back") as HTMLButtonElement,
+    dialogExit: document.getElementById("dialog-exit") as HTMLButtonElement
+};
+
+
 function startGame() {
     settings = loadSettings();
     document.body.classList.add(`theme--${settings.theme}`);
@@ -51,7 +59,7 @@ function startGame() {
     updatePlayerDisplay();
     renderBoard();
     addCardEvents();
-
+    initDialogEvents();
 }
 
 if (document.readyState === "loading") {
@@ -238,3 +246,24 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
+/**
+ * Initializes all event listeners related to the exit dialog.
+ * Handles opening, closing, and navigating back to the settings page.
+ */
+function initDialogEvents(): void {
+
+    // Open dialog
+    elementRev.exitButton?.addEventListener("click", () => {
+        elementRev.dialog.showModal();
+    });
+
+    // Close dialog
+    elementRev.dialogBack?.addEventListener("click", () => {
+        elementRev.dialog.close();
+    });
+
+    // Exit to settings page
+    elementRev.dialogExit?.addEventListener("click", () => {
+        window.location.href = "settings.html";
+    });
+}

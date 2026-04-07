@@ -2,28 +2,64 @@
 @use '../abstract/variables' as *;
 @use '../base/font' as *;
 
-.button{
+.button {
     @include flex-center(row, 20px);
     border: unset;
     padding: 24px;
     text-decoration: none;
     cursor: pointer;
 
-    &__icon{
+    &__icon {
         transition: all 0.2s ease-in-out;
     }
 
-    &__text{
+    &__text {
         font-family: 'Red Rose Bold';
         font-size: 40px;
         color: $background;
     }
 
-    &--primary{
+    &--primary {
         background-color: $primary;
     }
-    
-    &--disabled{
+
+    &--disabled {
         background-color: $secondary;
     }
+}
+
+.button--exit {
+    width: 128px;
+    height: 64px;
+    background-image: var(--exit-icon);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.button--exit:hover {
+    background-image: var(--exit-icon-hover);
+    transform: scale(1.05);
+}
+
+.button--back {
+    width: 128px;
+    height: 64px;
+    background-image: var(--back-icon);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.button--back:hover {
+    background-image: var(--back-icon-hover);
+    transform: scale(1.05);
 }
