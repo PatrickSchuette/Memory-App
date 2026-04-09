@@ -21,27 +21,6 @@ let settings: GameSettings;
 let state: GameState;
 let field: HTMLElement | null = null;
 
-const images = [
-    "/assets/food/card_1.svg",
-    "/assets/food/card_2.svg",
-    "/assets/food/card_3.svg",
-    "/assets/food/card_4.svg",
-    "/assets/food/card_5.svg",
-    "/assets/food/card_6.svg",
-    "/assets/food/card_7.svg",
-    "/assets/food/card_8.svg",
-    "/assets/food/card_9.svg",
-    "/assets/food/card_10.svg",
-    "/assets/food/card_11.svg",
-    "/assets/food/card_12.svg",
-    "/assets/food/card_13.svg",
-    "/assets/food/card_14.svg",
-    "/assets/food/card_15.svg",
-    "/assets/food/card_16.svg",
-    "/assets/food/card_17.svg",
-    "/assets/food/card_18.svg"
-];
-
 const elementRev = {
     dialog: document.getElementById("exitGame") as HTMLDialogElement,
     exitButton: document.getElementById("button-exit") as HTMLButtonElement,
@@ -111,7 +90,6 @@ function applyGridClass() {
     field.classList.add(`game__field--${settings.boardSize}`);
 }
 
-
 function renderBoard() {
     if (!field) return;
 
@@ -119,7 +97,7 @@ function renderBoard() {
 
     state.deck.forEach(id => {
         field!.innerHTML += `
-            <button class="card" data-image="${id}">
+            <button class="card card--${settings.theme}-${id}" data-image="${id}">
                 <div class="card__inner">
                     <div class="card__face card__face--front"></div>
                     <div class="card__face card__face--back"></div>
@@ -128,7 +106,6 @@ function renderBoard() {
         `;
     });
 }
-
 
 function addCardEvents() {
     if (!field) return;

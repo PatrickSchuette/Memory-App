@@ -1,33 +1,59 @@
-/* red-rose-regular - latin */
 @font-face {
-  font-display: swap;
   font-family: 'Red Rose';
-  font-style: normal;
   font-weight: 400;
-  src: url('/fonts/red-rose-v25-latin/red-rose-v25-latin-regular.woff2') format('woff2');
-}
-/* red-rose-700 - latin */
-@font-face {
-  font-display: swap;
-  font-family: 'Red Rose Bold';
-  font-style: normal;
-  font-weight: 700;
-  src: url('/fonts/red-rose-v25-latin/red-rose-v25-latin-700.woff2') format('woff2');
+  src: url('/fonts/red-rose-v25-latin/red-rose-v25-latin-regular.woff2');
 }
 
-/* almarai-regular - latin */
 @font-face {
-  font-display: swap;
-  font-family: 'Almarai';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/almarai-v19-latin/almarai-v19-latin-regular.woff2') format('woff2');
-}
-/* almarai-700 - latin */
-@font-face {
-  font-display: swap;
-  font-family: 'Almarai Bold';
-  font-style: normal;
+  font-family: 'Red Rose';
   font-weight: 700;
-  src: url('/fonts/almarai-v19-latin/almarai-v19-latin-700.woff2') format('woff2');
+  src: url('/fonts/red-rose-v25-latin/red-rose-v25-latin-700.woff2');
+}
+
+@font-face {
+  font-family: 'Almarai';
+  font-weight: 400;
+  src: url('/fonts/almarai-v19-latin/almarai-v19-latin-regular.woff2');
+}
+
+@font-face {
+  font-family: 'Almarai';
+  font-weight: 700;
+  src: url('/fonts/almarai-v19-latin/almarai-v19-latin-700.woff2');
+}
+
+@font-face {
+  font-family: 'Klee One';
+  font-weight: 400;
+  src: url('/fonts/klee-one-latin/klee-one-latin-ext-400-normal.woff2');
+}
+
+@font-face {
+  font-family: 'Klee One';
+  font-weight: 600;
+  src: url('/fonts/klee-one-latin/klee-one-latin-ext-600-normal.woff2');
+}
+
+@font-face {
+  font-family: 'Orbitron';
+  font-weight: 400;
+  src: url('/fonts/orbitron/orbitron-latin-400-normal.woff2');
+}
+
+@font-face {
+  font-family: 'Orbitron';
+  font-weight: 700;
+  src: url('/fonts/orbitron/orbitron-latin-700-normal.woff2');
+}
+
+@font-face {
+  font-family: 'Figtree';
+  font-weight: 400;
+  src: url('/fonts/figtree/figtree-latin-ext-400-normal.woff2');
+}
+
+@font-face {
+  font-family: 'Figtree';
+  font-weight: 700;
+  src: url('/fonts/figtree/figtree-latin-ext-700-normal.woff2');
 }

@@ -16,17 +16,21 @@
     align-items: flex-end;
     width: 100%;
     padding: 50px 100px;
-    font-family: 'Red Rose';
+    font-family: var(--currentFont);
+    color: var(--currentColor);
     position: sticky;
     top: 0;
     z-index: 2;
     background-color: var(--backgroundHeader);
     box-shadow: 0px 4px 9px 4px var(--backgroundHeader);
+    max-width: 1200px;
 }
 
 .game__score {
-    background-color: $tertiary;
+    background-color: var(--backgroundScore);
     padding: 17px 20px;
+    border-radius: 10px;
+
 
     &--blue {
         color: $player-blue;
@@ -159,4 +163,9 @@ dialog {
     display: flex;
     justify-content: center;
     gap: 40px;
+}
+
+.current-player {
+    font-family: var(--currentFont) !important;
+    color: var(--currentColor);
 }

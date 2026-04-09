@@ -19,6 +19,9 @@ $player-orange: #F58E39;
     --back-icon-hover: url('/assets/it/back_hover.svg');
     --backgroundTheme: #303131;
     --backgroundHeader: #303131;
+    --backgroundScore: #FFFFFF;
+    --currentFont: "Red Rose";
+    --currentColor: #FFFFFF;
 }
 
 .theme--game {
@@ -28,6 +31,9 @@ $player-orange: #F58E39;
     --back-icon-hover: url('/assets/game/back_hover.svg');
     --backgroundTheme: #294F60;
     --backgroundHeader: #FD96C933;
+    --backgroundScore: #FFFFFF;
+    --currentFont: "Orbitron";
+    --currentColor: #FFFFFF;
 }
 
 .theme--da {
@@ -37,6 +43,9 @@ $player-orange: #F58E39;
     --back-icon-hover: url('/assets/da/back_hover.svg');
     --backgroundTheme: #FFFFFF;
     --backgroundHeader: #F0F3F4;
+    --backgroundScore: #FFFFFF;
+    --currentFont: "Figtree";
+    --currentColor: #1E7594;
 }
 
 .theme--food {
@@ -46,4 +55,7 @@ $player-orange: #F58E39;
     --back-icon-hover: url('/assets/food/back_hover.svg');
     --backgroundTheme: #FFFFFF;
     --backgroundHeader: #F0E5D9;
+    --backgroundScore: #FFFFFF;
+    --currentFont: "Klee One";
+    --currentColor: #A45212;
 }

@@ -33,6 +33,8 @@
 
     &__face--back {
         transform: rotateY(180deg);
+        background-position: center;
+        background-repeat: no-repeat;
     }
 
     &.is-flipped .card__inner {
