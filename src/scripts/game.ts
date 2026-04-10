@@ -28,8 +28,11 @@ const elementRev = {
     dialogExit: document.getElementById("dialog-exit") as HTMLButtonElement
 };
 
-
-function startGame() {
+/**
+ * Starts the game by loading settings, applying the theme,
+ * initializing the game field, state, board, and all event listeners.
+ */
+function startGame(): void {
     settings = loadSettings();
     document.body.classList.add(`theme--${settings.theme}`);
     initField();
@@ -47,7 +50,10 @@ if (document.readyState === "loading") {
     startGame();
 }
 
-
+/**
+ * Loads game settings from sessionStorage.
+ * Returns default settings if none are found.
+ */
 function loadSettings(): GameSettings {
     const data = sessionStorage.getItem('gameSettings');
     return data ? JSON.parse(data) : {
@@ -57,7 +63,11 @@ function loadSettings(): GameSettings {
     };
 }
 
-function initState() {
+/**
+ * Initializes the game state including deck, player turn,
+ * score counters, and board lock state.
+ */
+function initState(): void {
     state = {
         deck: createDeck(settings.boardSize),
         firstCard: null,
@@ -70,19 +80,31 @@ function initState() {
     };
 }
 
-function createDeck(size: number) {
+/**
+ * Creates a shuffled deck of card IDs based on the board size.
+ * Each ID appears exactly twice.
+ */
+function createDeck(size: number): number[] {
     const pairCount = size / 2;
     const ids = Array.from({ length: pairCount }, (_, i) => i + 1);
     const deck = [...ids, ...ids];
     return deck.sort(() => Math.random() - 0.5);
 }
 
-function initField() {
+/**
+ * Retrieves and validates the game field container element.
+ * Throws an error if the field cannot be found.
+ */
+function initField(): void {
     field = document.getElementById('field');
     if (!field) throw new Error("Field not found");
 }
 
-function applyGridClass() {
+/**
+ * Applies the correct grid layout class to the game field
+ * based on the selected board size.
+ */
+function applyGridClass(): void {
     if (!field) return;
 
     field.classList.remove("game__field--16", "game__field--24", "game__field--36");
@@ -90,7 +112,11 @@ function applyGridClass() {
     field.classList.add(`game__field--${settings.boardSize}`);
 }
 
-function renderBoard() {
+/**
+ * Renders the game board by generating card elements
+ * with theme‑specific classes and image IDs.
+ */
+function renderBoard(): void {
     if (!field) return;
 
     field.innerHTML = "";
@@ -107,7 +133,11 @@ function renderBoard() {
     });
 }
 
-function addCardEvents() {
+/**
+ * Adds click event handling for all cards.
+ * Handles flipping logic and prevents invalid interactions.
+ */
+function addCardEvents(): void {
     if (!field) return;
 
     field.addEventListener('click', e => {
@@ -126,28 +156,36 @@ function addCardEvents() {
     });
 }
 
-function updatePlayerDisplay() {
-    const playerElement = document.querySelector(".current-player");
-    if (!playerElement) return;
-
-    playerElement.classList.remove("game__player--blue", "game__player--orange");
+/**
+ * Updates the UI to reflect the current player's turn by switching
+ * the displayed player icon instead of text.
+ */
+function updatePlayerDisplay(): void {
+    const icon = document.getElementById("current-player-icon") as HTMLImageElement;
+    if (!icon) return;
 
     if (state.currentPlayer === "Blue") {
-        playerElement.classList.add("game__player--blue");
-        playerElement.textContent = "Current Player: Blue";
+        icon.src = "/assets/currentBlue.svg";
+        icon.alt = "Blue Player";
     } else {
-        playerElement.classList.add("game__player--orange");
-        playerElement.textContent = "Current Player: Orange";
+        icon.src = "/assets/currentOrange.svg";
+        icon.alt = "Orange Player";
     }
 }
 
-
-function checkMatch() {
+/**
+ * Checks whether the two flipped cards match
+ * and triggers the appropriate follow‑up action.
+ */
+function checkMatch(): void {
     const match = state.firstCard!.dataset.image === state.secondCard!.dataset.image;
     match ? disableCards() : unflipCards();
 }
 
-function updateScore() {
+/**
+ * Updates the score display for both players.
+ */
+function updateScore(): void {
     const blue = document.getElementById("score-blue");
     const orange = document.getElementById("score-orange");
 
@@ -155,7 +193,11 @@ function updateScore() {
     if (orange) orange.textContent = state.orangeScore.toString();
 }
 
-function disableCards() {
+/**
+ * Handles a successful match by disabling the matched cards,
+ * updating scores, and checking for game completion.
+ */
+function disableCards(): void {
     state.firstCard!.style.pointerEvents = "none";
     state.secondCard!.style.pointerEvents = "none";
 
@@ -172,12 +214,14 @@ function disableCards() {
         endGame();
     }
     
-
     resetTurn();
 }
 
-
-function unflipCards() {
+/**
+ * Handles a failed match by flipping the cards back
+ * and switching the active player.
+ */
+function unflipCards(): void {
     state.lockBoard = true;
 
     setTimeout(() => {
@@ -191,13 +235,21 @@ function unflipCards() {
     }, 1000);
 }
 
-function resetTurn() {
+/**
+ * Resets the temporary card selection state
+ * so the next turn can begin.
+ */
+function resetTurn(): void {
     state.firstCard = null;
     state.secondCard = null;
     state.lockBoard = false;
 }
 
-function endGame() {
+/**
+ * Ends the game by determining the winner,
+ * storing final scores, and navigating to the Game Over screen.
+ */
+function endGame():void {
     const winner =
         state.blueScore > state.orangeScore
             ? "Blue"
@@ -209,7 +261,6 @@ function endGame() {
     sessionStorage.setItem("blueScore", state.blueScore.toString());
     sessionStorage.setItem("orangeScore", state.orangeScore.toString());
 
-    // Game-Over-Seite öffnen
     window.location.href = "/game-over.html";
 }
 
@@ -228,18 +279,14 @@ document.addEventListener("keydown", (e) => {
  * Handles opening, closing, and navigating back to the settings page.
  */
 function initDialogEvents(): void {
-
-    // Open dialog
     elementRev.exitButton?.addEventListener("click", () => {
         elementRev.dialog.showModal();
     });
 
-    // Close dialog
     elementRev.dialogBack?.addEventListener("click", () => {
         elementRev.dialog.close();
     });
 
-    // Exit to settings page
     elementRev.dialogExit?.addEventListener("click", () => {
         window.location.href = "settings.html";
     });

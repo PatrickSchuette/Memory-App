@@ -2,52 +2,74 @@
 @use '../abstract/variables' as *;
 @use '../base/font' as *;
 
-.start{
+.start {
     @include flex-center(column, 85px);
     height: 100vh;
     width: 100%;
     background-color: $background;
-    background-image: url('assets/controller_bg.png');
+    background-image: url('/assets/stadia_controller.svg');
     background-repeat: no-repeat;
     background-position: left bottom;
+    background-size: 420px; // wie im Bild
 
-    &__hero{
+    &__hero {
+        text-align: start;
         color: white;
+        margin-bottom: 40px;
     }
 
-    &__subtitle{
+    &__subtitle {
         font-family: 'Almarai';
         font-size: 48px;
+        opacity: 0.8;
     }
 
-    &__title{
+    &__title {
         font-family: 'Red Rose Bold';
         font-size: 140px;
+        line-height: 1;
     }
 }
 
 
-.button--play{
-    align-self: center;
+.button--play {
+    @include flex-center(row, 20px);
+    background-color: $primary;
+    padding: 20px 40px;
+    border-radius: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border: none;
 
-    .button__icon{
+    .button__icon {
         width: 44px;
-        transform: rotate(25.77deg);
+        transform: rotate(0);
+        transition: all 0.2s ease;
     }
 
-    .button__arrow{
+    .button__text {
+        font-family: 'Red Rose Bold';
+        font-size: 40px;
+        color: $background;
+    }
+
+    .button__arrow {
         width: 33px;
+        transition: width 0.2s ease;
     }
 
-    &:hover{
-        .button__icon{
+    &:hover {
+        transform: scale(1.05);
+
+        .button__icon {
             width: 51px;
-            transform: rotate(0);
+            transform: rotate(25deg);
         }
-        
-        .button__arrow{
+
+        .button__arrow {
             width: 36px;
-            content: url('../assets/arrow_thick.png');
+            content: url('/assets/btnStart-arrow_hover.svg');
         }
     }
 }

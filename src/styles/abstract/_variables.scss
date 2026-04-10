@@ -17,11 +17,15 @@ $player-orange: #F58E39;
     --exit-icon-hover: url('/assets/it/exit_hover.svg');
     --back-icon: url('/assets/it/back.svg');
     --back-icon-hover: url('/assets/it/back_hover.svg');
+    --winner-icon: url('/assets/it/winner.svg');
     --backgroundTheme: #303131;
     --backgroundHeader: #303131;
     --backgroundScore: #FFFFFF;
+    --backgroundOver: #303131;
+    --backgroundWin: #303131;
     --currentFont: "Red Rose";
     --currentColor: #FFFFFF;
+    --gameOverColor: #4DD5BC;
 }
 
 .theme--game {
@@ -29,11 +33,15 @@ $player-orange: #F58E39;
     --exit-icon-hover: url('/assets/game/exit_hover.svg');
     --back-icon: url('/assets/game/back.svg');
     --back-icon-hover: url('/assets/game/back_hover.svg');
+    --winner-icon: url('/assets/game/winner.svg');
     --backgroundTheme: #294F60;
     --backgroundHeader: #FD96C933;
     --backgroundScore: #FFFFFF;
+    --backgroundOver: #294F60;
+    --backgroundWin: #294F60;
     --currentFont: "Orbitron";
     --currentColor: #FFFFFF;
+    --gameOverColor: #ED1B76;
 }
 
 .theme--da {
@@ -41,11 +49,15 @@ $player-orange: #F58E39;
     --exit-icon-hover: url('/assets/da/exit_hover.svg');
     --back-icon: url('/assets/da/back.svg');
     --back-icon-hover: url('/assets/da/back_hover.svg');
+    --winner-icon: url('/assets/da/winner.svg');
     --backgroundTheme: #FFFFFF;
     --backgroundHeader: #F0F3F4;
     --backgroundScore: #FFFFFF;
+    --backgroundOver: #1E7594;
+    --backgroundWin: #1E7594;
     --currentFont: "Figtree";
     --currentColor: #1E7594;
+    --gameOverColor: #FD5B4F;
 }
 
 .theme--food {
@@ -53,9 +65,13 @@ $player-orange: #F58E39;
     --exit-icon-hover: url('/assets/food/exit_hover.svg');
     --back-icon: url('/assets/food/back.svg');
     --back-icon-hover: url('/assets/food/back_hover.svg');
+    --winner-icon: url('/assets/food/winner.svg');
     --backgroundTheme: #FFFFFF;
     --backgroundHeader: #F0E5D9;
     --backgroundScore: #FFFFFF;
+    --backgroundOver: #F3832D;
+    --backgroundWin: #F6F6F6;
     --currentFont: "Klee One";
     --currentColor: #A45212;
+    --gameOverColor: #FD5B4F;
 }
