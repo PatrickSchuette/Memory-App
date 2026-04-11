@@ -1,29 +1,46 @@
 export {};
-    const blue = document.getElementById("blue-final");
-    const orange = document.getElementById("orange-final");
 
-    const blueScore = sessionStorage.getItem("blueScore") || "0";
-    const orangeScore = sessionStorage.getItem("orangeScore") || "0";
+/**
+ * Loads the final scores from sessionStorage.
+ */
+function loadScores(): { blue: string; orange: string } {
+    return {
+        blue: sessionStorage.getItem("blueScore") || "0",
+        orange: sessionStorage.getItem("orangeScore") || "0"
+    };
+}
 
-    /**
-     * Initializes the Game Over screen by loading the final scores,
-     * applying the correct theme, and preparing the redirect.
-     */
-    function initGameOver(): void {
-    
-        // Apply theme from sessionStorage
-        const settingsData = sessionStorage.getItem("gameSettings");
-        if (settingsData) {
-            const settings = JSON.parse(settingsData);
-            document.body.classList.add(`theme--${settings.theme}`);
-        }
-    
-        if (blue) blue.textContent = blueScore;
-        if (orange) orange.textContent = orangeScore;
-    
-        setTimeout(() => {
-            window.location.href = "./winner.html";
-        }, 1500);
-    }
-    
+/**
+ * Applies the saved theme to the document body.
+ */
+function applyTheme(): void {
+    const data = sessionStorage.getItem("gameSettings");
+    if (!data) return;
+    const settings = JSON.parse(data);
+    document.body.classList.add(`theme--${settings.theme}`);
+}
+
+/**
+ * Initializes the Game Over screen.
+ */
+function initGameOver(): void {
+    applyTheme();
+    const { blue, orange } = loadScores();
+
+    const blueEl = document.getElementById("blue-final");
+    const orangeEl = document.getElementById("orange-final");
+
+    if (blueEl) blueEl.textContent = blue;
+    if (orangeEl) orangeEl.textContent = orange;
+
+    setTimeout(() => {
+        window.location.href = "./winner.html";
+    }, 1500);
+}
+
+/**
+ * Public entry point for the Game Over page.
+ */
+export function startGameOver(): void {
     initGameOver();
+}
