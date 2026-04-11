@@ -218,7 +218,6 @@ function initCheatMode(): void {
     });
 }
 
-
 /**
  * Initializes dialog events.
  */

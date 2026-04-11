@@ -17,7 +17,6 @@ function updateWinnerText(): void {
     const winner = sessionStorage.getItem("winner") || "Draw";
     const el = document.getElementById("winner-text");
     if (!el) return;
-
     if (winner === "Blue") {
         el.textContent = "Blue Wins!";
         el.classList.add("winner--blue");

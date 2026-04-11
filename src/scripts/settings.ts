@@ -36,7 +36,65 @@ const themeMap: Record<string, string> = {
 };
 
 /**
- * Initializes the start button behavior.
+ * Initializes the settings page.
+ */
+function initSettingsPage(): void {
+    initThemeInputs();
+    initPlayerInputs();
+    initBoardInputs();
+    initStartButton();
+    initRadioHighlight();
+    initThemeHoverPreview();
+    updateSummary();
+    updateStartButtonState();
+}
+
+/**
+ * Initializes theme input listeners.
+ */
+function initThemeInputs(): void {
+    ui.themeInputs.forEach(input => {
+        input.addEventListener("change", () => {
+            settingsData.theme = input.value;
+            handleSettingsChange();
+        });
+    });
+}
+
+/**
+ * Initializes player input listeners.
+ */
+function initPlayerInputs(): void {
+    ui.playerInputs.forEach(input => {
+        input.addEventListener("change", () => {
+            settingsData.player = input.value;
+            handleSettingsChange();
+        });
+    });
+}
+
+/**
+ * Initializes board size input listeners.
+ */
+function initBoardInputs(): void {
+    ui.boardInputs.forEach(input => {
+        input.addEventListener("change", () => {
+            settingsData.boardSize = Number(input.value);
+            handleSettingsChange();
+        });
+    });
+}
+
+/**
+ * Handles updates after any settings change.
+ */
+function handleSettingsChange(): void {
+    updateSummary();
+    updateStartButtonState();
+}
+
+/**
+ * Initializes the start button.
  */
 function initStartButton(): void {
     ui.startButton?.addEventListener("click", () => {
@@ -55,47 +113,15 @@ function saveSettings(): void {
 }
 
 /**
- * Initializes all settings input listeners.
- */
-function initSettingsInputs(): void {
-    ui.themeInputs.forEach(input => {
-        input.addEventListener("change", () => {
-            settingsData.theme = input.value;
-            updateSummary();
-            updateStartButtonState();
-        });
-    });
-
-    ui.playerInputs.forEach(input => {
-        input.addEventListener("change", () => {
-            settingsData.player = input.value;
-            updateSummary();
-            updateStartButtonState();
-        });
-    });
-
-    ui.boardInputs.forEach(input => {
-        input.addEventListener("change", () => {
-            settingsData.boardSize = Number(input.value);
-            updateSummary();
-            updateStartButtonState();
-        });
-    });
-
-    updateSummary();
-    initThemeHoverPreview();
-}
-
-/**
- * Enables or disables the start button.
+ * Updates the start button state.
  */
 function updateStartButtonState(): void {
-    const complete =
+    const ready =
         settingsData.theme !== null &&
         settingsData.player !== null &&
         settingsData.boardSize !== null;
 
-    if (ui.startButton) ui.startButton.disabled = !complete;
+    if (ui.startButton) ui.startButton.disabled = !ready;
 }
 
 /**
@@ -107,15 +133,11 @@ function updateSummary(): void {
 }
 
 /**
- * Updates the theme preview image.
+ * Updates the preview image.
  */
 function updatePreviewImage(): void {
     if (!ui.previewImage) return;
-    if (!settingsData.theme) {
-        ui.previewImage.src = "";
-        return;
-    }
-    ui.previewImage.src = themePreviewMap[settingsData.theme];
+    ui.previewImage.src = settingsData.theme ? themePreviewMap[settingsData.theme] : "";
 }
 
 /**
@@ -123,24 +145,26 @@ function updatePreviewImage(): void {
  */
 function updateSummaryList(): void {
     if (!ui.summaryList) return;
-
     const themeText = settingsData.theme
-        ? settingsData.theme.replace(/([A-Z])/g, " $1").trim()
+        ? formatThemeName(settingsData.theme)
         : "Theme";
-
     const playerText = settingsData.player
         ? `${settingsData.player} Player`
         : "Player";
-
     const boardText = settingsData.boardSize
         ? `Board-${settingsData.boardSize} Cards`
         : "Board size";
-
     ui.summaryList.innerHTML = `
         <li>${themeText}</li>
         <li>${playerText}</li>
-        <li>${boardText}</li>
-    `;
+        <li>${boardText}</li>  `;
+}
+
+/**
+ * Formats theme names for display.
+ */
+function formatThemeName(name: string): string {
+    return name.replace(/([A-Z])/g, " $1").trim();
 }
 
 /**
@@ -149,44 +173,44 @@ function updateSummaryList(): void {
 function initThemeHoverPreview(): void {
     ui.themeInputs.forEach(input => {
         const label = input.parentElement as HTMLLabelElement;
-        const themeKey = input.value;
-
-        label.addEventListener("mouseover", () => {
-            if (ui.previewImage) ui.previewImage.src = themePreviewMap[themeKey];
-        });
-
-        label.addEventListener("mouseout", () => {
-            if (!ui.previewImage) return;
-            ui.previewImage.src = settingsData.theme
-                ? themePreviewMap[settingsData.theme]
-                : "";
-        });
+        label.addEventListener("mouseover", () => setHoverPreview(input.value));
+        label.addEventListener("mouseout", resetHoverPreview);
     });
 }
 
 /**
- * Highlights selected radio labels.
+ * Sets hover preview image.
+ */
+function setHoverPreview(themeKey: string): void {
+    if (ui.previewImage) ui.previewImage.src = themePreviewMap[themeKey];
+}
+
+/**
+ * Resets hover preview image.
+ */
+function resetHoverPreview(): void {
+    if (!ui.previewImage) return;
+    ui.previewImage.src = settingsData.theme ? themePreviewMap[settingsData.theme] : "";
+}
+
+/**
+ * Initializes radio highlight behavior.
  */
 function initRadioHighlight(): void {
     const radios = document.querySelectorAll<HTMLInputElement>('input[type="radio"]');
     radios.forEach(radio => {
-        radio.addEventListener("change", () => {
-            const fieldset = radio.closest("fieldset");
-            if (!fieldset) return;
-            fieldset.querySelectorAll("label").forEach(l => l.classList.remove("selected"));
-            radio.closest("label")?.classList.add("selected");
-        });
+        radio.addEventListener("change", () => highlightRadio(radio));
     });
 }
 
 /**
- * Private initializer for the settings page.
+ * Highlights the selected radio label.
  */
-function initSettingsPage(): void {
-    initSettingsInputs();
-    initStartButton();
-    updateStartButtonState();
-    initRadioHighlight();
+function highlightRadio(radio: HTMLInputElement): void {
+    const fieldset = radio.closest("fieldset");
+    if (!fieldset) return;
+    fieldset.querySelectorAll("label").forEach(l => l.classList.remove("selected"));
+    radio.closest("label")?.classList.add("selected");
 }
 
 /**
