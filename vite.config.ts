@@ -1,5 +1,16 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
 
 export default defineConfig({
-    base: "/"
+  base: "/Memory/",
+  build: {
+    rollupOptions: {
+      input: {
+        main: "index.html",
+        settings: "settings.html",
+        game: "game.html",
+        winner: "winner.html",
+        gameover: "game-over.html"
+      }
+    }
+  }
 });

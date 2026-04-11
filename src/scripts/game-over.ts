@@ -22,7 +22,7 @@ export {};
         if (orange) orange.textContent = orangeScore;
     
         setTimeout(() => {
-            window.location.href = "/winner.html";
+            window.location.href = "./winner.html";
         }, 1500);
     }
     

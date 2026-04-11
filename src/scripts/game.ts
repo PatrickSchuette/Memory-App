@@ -165,10 +165,10 @@ function updatePlayerDisplay(): void {
     if (!icon) return;
 
     if (state.currentPlayer === "Blue") {
-        icon.src = "/assets/currentBlue.svg";
+        icon.src = "./assets/currentBlue.svg";
         icon.alt = "Blue Player";
     } else {
-        icon.src = "/assets/currentOrange.svg";
+        icon.src = "./assets/currentOrange.svg";
         icon.alt = "Orange Player";
     }
 }
@@ -258,7 +258,7 @@ function endGame():void {
     sessionStorage.setItem("blueScore", state.blueScore.toString());
     sessionStorage.setItem("orangeScore", state.orangeScore.toString());
 
-    window.location.href = "/game-over.html";
+    window.location.href = "./game-over.html";
 }
 
 /**
@@ -288,6 +288,6 @@ function initDialogEvents(): void {
     });
 
     elementRev.dialogExit?.addEventListener("click", () => {
-        window.location.href = "settings.html";
+        window.location.href = "./settings.html";
     });
 }

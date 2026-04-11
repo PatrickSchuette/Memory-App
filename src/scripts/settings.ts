@@ -37,10 +37,10 @@ const elementRev = {
  * Maps internal theme identifiers to preview image paths.
  */
 const themePreviewMap: Record<string, string> = {
-    CodeVibesTheme: '/assets/themeIT.svg',
-    GamingTheme: '/assets/themeGaming.svg',
-    DAProjectsTheme: '/assets/themeDA.svg',
-    FoodsTheme: '/assets/themeFood.svg'
+    CodeVibesTheme: './assets/themeIT.svg',
+    GamingTheme: './assets/themeGaming.svg',
+    DAProjectsTheme: './assets/themeDA.svg',
+    FoodsTheme: './assets/themeFood.svg'
 };
 
 /**
@@ -67,7 +67,7 @@ initRadioHighlight();
 function initStartButton(): void {
     elementRev.startButton?.addEventListener('click', () => {
         saveSettings();
-        window.location.href = "game.html";
+        window.location.href = "./game.html";
     });
 }
 
