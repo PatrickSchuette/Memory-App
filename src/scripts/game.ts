@@ -206,14 +206,11 @@ function disableCards(): void {
     } else {
         state.orangeScore++;
     }
-
     updateScore();
     state.matches++;
-
     if (state.matches === settings.boardSize / 2) {
         endGame();
     }
-    
     resetTurn();
 }
 
@@ -264,6 +261,9 @@ function endGame():void {
     window.location.href = "/game-over.html";
 }
 
+/**
+ * add Cheat Mode for Testing. All Cards will show the 
+ */
 document.addEventListener("keydown", (e) => {
     if (e.key === "c") {
         console.warn("CHEAT MODE: All cards revealed");

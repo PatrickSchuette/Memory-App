@@ -63,3 +63,21 @@
     background-image: var(--back-icon-hover);
     transform: scale(1.05);
 }
+
+.button--home {
+    width: 186px;
+    height: 64px;
+    background-image: var(--home-icon);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.button--home:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+}

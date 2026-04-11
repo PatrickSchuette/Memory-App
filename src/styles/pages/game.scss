@@ -9,141 +9,116 @@
     width: 100%;
     background-color: var(--backgroundTheme);
     padding-bottom: 54px;
-}
 
-.game__header {
-    @include flex-space();
-    align-items: flex-end;
-    width: 100%;
-    padding: 50px 100px;
-    font-family: var(--currentFont);
-    color: var(--currentColor);
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    background-color: var(--backgroundHeader);
-    box-shadow: 0px 4px 9px 4px var(--backgroundHeader);
-    max-width: 1200px;
-}
-
-.game__score {
-    background-color: var(--backgroundScore);
-    padding: 17px 20px;
-    border-radius: 10px;
-
-
-    &--blue {
-        color: $player-blue;
+    &__header {
+        @include flex-space();
+        align-items: flex-end;
+        width: 100%;
+        padding: 50px 100px;
+        font-family: var(--currentFont);
+        color: var(--currentColor);
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background-color: var(--backgroundHeader);
+        box-shadow: 0px 4px 9px 4px var(--backgroundHeader);
+        max-width: 1200px;
     }
 
-    &--orange {
-        color: $player-orange;
-    }
-}
+    &__score {
+        background-color: var(--backgroundScore);
+        padding: 17px 20px;
+        border-radius: 10px;
 
-.game__score ul {
-    @include flex-start(row, 20px);
-    list-style: none;
-    font-size: 24px;
-}
-
-/*
-.game__score li,
-.game__player p {
-
-    &::before,
-    &::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        border-radius: 2px;
-    }
-
-    &::before {
-        border: 10px solid;
-        border-color: inherit;
-    }
-
-    &::after {
-        border: solid transparent;
-        border-width: 10px 0 10px 8px;
-        border-left-color: inherit;
-    }
-}*/
-
-.game__score li {
-    position: relative;
-    margin-left: 31px;
-
-    &::before {
-        left: -31px;
-    }
-
-    &::after {
-        left: -12px;
-    }
-}
-
-.game__player p {
-    position: relative;
-
-    &::before {
-        right: -31px;
-    }
-
-    &::after {
-        right: -38px;
-    }
-}
-
-.game__player {
-    color: white;
-    font-size: 26px;
-    margin-right: 39px;
-
-    &--blue {
-        &::after {
+        &--blue {
             color: $player-blue;
         }
 
-        &::before {
-            color: $player-blue;
-        }
-    }
-
-    &--orange {
-        &::after {
+        &--orange {
             color: $player-orange;
         }
 
-        &::before {
-            color: $player-orange;
+        ul {
+            @include flex-start(row, 20px);
+            list-style: none;
+            font-size: 24px;
+        }
+
+        li {
+            position: relative;
+            margin-left: 31px;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: -31px;
+                transform: translateY(-50%);
+                border-radius: 2px;
+                border: 10px solid;
+                border-color: inherit;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: -12px;
+                transform: translateY(-50%);
+                border: solid transparent;
+                border-width: 10px 0 10px 8px;
+                border-left-color: inherit;
+            }
         }
     }
-}
 
-.game__field {
-    display: grid;
+    &__player {
+        color: white;
+        font-size: 26px;
+        margin-right: 39px;
 
-    &--16 {
-        width: 525px;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 15px;
+        &--blue {
+            p {
+
+                &::before,
+                &::after {
+                    color: $player-blue;
+                }
+            }
+        }
+
+        &--orange {
+            p {
+
+                &::before,
+                &::after {
+                    color: $player-orange;
+                }
+            }
+        }
     }
 
-    &--24 {
-        width: 770px;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 12px;
-    }
+    &__field {
+        display: grid;
 
-    &--36 {
-        width: 770px;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 10px;
-    }
+        &--16 {
+            width: 525px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
 
+        &--24 {
+            width: 770px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+        }
+
+        &--36 {
+            width: 770px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+        }
+    }
 }
 
 dialog {
@@ -169,4 +144,16 @@ dialog {
 .current-player {
     font-family: var(--currentFont) !important;
     color: var(--currentColor);
+}
+
+.game__player {
+    display: flex;
+    align-items: center;
+    gap: 12px; // Abstand zwischen Text und Icon
+}
+
+#current-player-icon {
+    width: 32px;
+    height: 32px;
+    display: block;
 }

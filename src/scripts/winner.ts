@@ -1,37 +1,43 @@
 export {};
 
-/**
- * Initializes the Winner screen by loading the winner name
- * from sessionStorage, applying the correct theme class,
- * and updating the UI accordingly.
- */
-function initWinner(): void {
-    const winner = sessionStorage.getItem("winner") || "Draw";
-    const winnerText = document.getElementById("winner-text");
+const WinnerScreen = {
+    /**
+     * Initializes the winner screen.
+     */
+    init(): void {
+        this.applyTheme();
+        this.updateWinnerText();
+    },
 
-    // Apply theme from settings
-    const settingsData = sessionStorage.getItem("gameSettings");
-    if (settingsData) {
-        const settings = JSON.parse(settingsData);
+    /**
+     * Applies the theme stored in sessionStorage.
+     */
+    applyTheme(): void {
+        const data = sessionStorage.getItem("gameSettings");
+        if (!data) return;
+
+        const settings = JSON.parse(data);
         document.body.classList.add(`theme--${settings.theme}`);
-    }
+    },
 
-    if (winnerText) {
+    /**
+     * Updates the winner text and styling.
+     */
+    updateWinnerText(): void {
+        const winner = sessionStorage.getItem("winner") || "Draw";
+        const el = document.getElementById("winner-text");
+        if (!el) return;
+
         if (winner === "Blue") {
-            winnerText.textContent = "Blue Wins!";
-            winnerText.classList.add("winner--blue");
+            el.textContent = "Blue Wins!";
+            el.classList.add("winner--blue");
         } else if (winner === "Orange") {
-            winnerText.textContent = "Orange Wins!";
-            winnerText.classList.add("winner--orange");
+            el.textContent = "Orange Wins!";
+            el.classList.add("winner--orange");
         } else {
-            winnerText.textContent = "It's a Draw!";
+            el.textContent = "It's a Draw!";
         }
     }
-}
+};
 
-// Run when DOM is ready
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initWinner);
-} else {
-    initWinner();
-}
+document.addEventListener("DOMContentLoaded", () => WinnerScreen.init());

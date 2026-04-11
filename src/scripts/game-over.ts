@@ -23,7 +23,7 @@ export {};
     
         setTimeout(() => {
             window.location.href = "/winner.html";
-        }, 5000);
+        }, 1500);
     }
     
     initGameOver();

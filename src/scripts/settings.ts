@@ -57,6 +57,7 @@ const themeMap: Record<string, string> = {
 initSettings();
 initStartButton();
 updateStartButtonState();
+initRadioHighlight();
 
 
 /**
@@ -201,12 +202,10 @@ function initThemeHoverPreview(): void {
         const themeKey = input.value;
         const label = input.parentElement as HTMLLabelElement;
 
-        // Hover über das Label
         label.addEventListener("mouseover", () => {
             elementRev.previewImage!.src = themePreviewMap[themeKey];
         });
 
-        // Hover verlassen
         label.addEventListener("mouseout", () => {
             if (!settingsData.theme) {
                 elementRev.previewImage!.src = "";
@@ -214,6 +213,21 @@ function initThemeHoverPreview(): void {
             }
 
             elementRev.previewImage!.src = themePreviewMap[settingsData.theme];
+        });
+    });
+}
+
+/**
+ * Highlights selected radio labels.
+ */
+function initRadioHighlight(): void {
+    const radios = document.querySelectorAll<HTMLInputElement>('input[type="radio"]');
+    radios.forEach(radio => {
+        radio.addEventListener("change", () => {
+            const fieldset = radio.closest("fieldset");
+            if (!fieldset) return;
+            fieldset.querySelectorAll("label").forEach(l => l.classList.remove("selected"));
+            radio.closest("label")?.classList.add("selected");
         });
     });
 }
